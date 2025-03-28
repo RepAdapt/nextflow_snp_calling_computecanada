@@ -5,7 +5,8 @@ This pipeline takes fastq reads, a reference genome and a gff file and will prod
 - a minimally filtered vcf (removing SNPs where all indidivuals are homozyogous ALT and any SNP with MQ < 30).
 - 3 depth statistics files per dataset: samples genes depth, samples windows depth and samples whole-genome depth.
 
-Login to ComputeCanada Narval or Beluga from a login node:
+Login to ComputeCanada Narval or Beluga.
+From a login node do:
 
 <pre>module purge # Make sure that previously loaded modules are not polluting the installation 
 module load python/3.11
