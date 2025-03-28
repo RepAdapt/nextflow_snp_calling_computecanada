@@ -6,7 +6,7 @@ This pipeline takes fastq reads, a reference genome and a gff file and will prod
 - 3 depth statistics files per dataset: samples genes depth, samples windows depth and samples whole-genome depth.
 
 Login to ComputeCanada Narval or Beluga.
-From a login node:
+From a login node in your home dir run:
 
 <pre>module purge # Make sure that previously loaded modules are not polluting the installation 
 module load python/3.11
