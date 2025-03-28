@@ -70,7 +70,9 @@ profiles {
 }
 </pre>
 
-Do not worry about the cpus, memory and time of the slurm process. These slurm global options will be overwritten by the cpus, memory and time specified for each process of the workflow defined in modules. Do not change anything in the narval and beluga profiles.
+Do not worry about the cpus, memory and time of the slurm process. These slurm global options will be overwritten by the cpus, memory and time specified for each process of the workflow defined in modules. 
+
+Do not change anything in the narval and beluga profiles, these are the specs of the machines in those clusters.
 
 
 Now, download all the singularity images needed: https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.md
