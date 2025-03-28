@@ -1,8 +1,8 @@
 process samtoolsSort {
     tag "Samtools sorting bam files"
     cpus 4
-    memory '4GB'
-    time '6h'
+    memory '16GB'
+    time '24h'
     errorStrategy 'ignore'
 
     input:
