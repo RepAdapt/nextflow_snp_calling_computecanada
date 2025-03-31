@@ -1,8 +1,8 @@
 process dupRemoval {
     tag "Picard removing duplicates from bam files"
     cpus 1
-    memory '4GB'
-    time '6h'
+    memory '16GB'
+    time '12h'
     errorStrategy 'ignore'
 
     input:
