@@ -3,6 +3,7 @@ process calculateDepth {
     cpus 1
     memory '4GB'
     time '6h'
+    errorStrategy 'ignore'
 
     input:
     path realigned_bam
