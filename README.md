@@ -104,8 +104,31 @@ Change the profile flag in run_pipeline.sh to either beluga or narval (depending
 
 <b>IMPORTANT</b>
 
-The reference genome file MUST HAVE .fasta suffix (change it to .fasta if yours is .fa)
-
-The GFF file MUST HAVE .gff suffix
-
 It is required to pull all the apptainer images as sif files and link them to the directory where you saved  them (/project/def-group/NXF_SINGULARITY_CACHEDIR) in the config file nextflow_singularity.config
+
+
+
+
+
+
+
+
+# Comments
+
+- **Reference too fragmented -- stitching the reference genome:**  
+  If a reference genome is highly fragmented, consisting of thousands or even millions of scaffolds, it is beneficial to stitch them into larger contiguous sequences before running the SNP calling pipeline to reduce the total number of scaffolds.  
+  Having a reference composed of too many scaffolds will cause errors in the indel realignment step with GATK3 – I am not sure which threshold is “too many.”  
+  Additionally, the pipeline parallelizes the SNP calling step (`bcftools mpileup + call`) by chromosome (calling SNPs in each chromosome in parallel), therefore having a very fragmented reference would result in sending thousands (or millions) of very fast jobs – it would still work but it would be overkill and probably not ideal for queue times on a job scheduler.  
+  So, if your reference is too fragmented, please stitch it and unstitch it after SNP calling!  
+
+- **Reference must have `.fasta` suffix while genes GFF must have `.gff` suffix.**  
+
+- **Make sure that the `.gff` file and reference genome use the same exact chromosome names,**  
+  else the depth of coverage statistics will not be calculated. The names need to be exactly the same, so if, for example, the reference has `chromosome_1` and the GFF has `chr_1`, these will have to be changed to the same naming.  
+
+- **Make sure the chromosome/scaffold names do not contain weird characters that may break commands.**  
+  A very unusual case that I found was a reference that had `|` pipes included in the chromosome names – this can cause a lot of issues, as the pipe `|` may be interpreted as a Linux pipe command.  
+
+- **If a process fails, the first thing to check is whether it was due to low run time or RAM.**  
+  RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files per sample), it might be necessary to increase RAM and run time for some processes.  
+
