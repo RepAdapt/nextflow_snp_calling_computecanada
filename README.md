@@ -106,6 +106,8 @@ Change the profile flag in run_pipeline.sh to either beluga or narval (depending
 
 It is required to pull all the apptainer images as sif files and link them to the directory where you saved  them (/project/def-group/NXF_SINGULARITY_CACHEDIR) in the config file nextflow_singularity.config
 
+Apptainer images vailable at: https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.md
+
 
 
 
