@@ -130,7 +130,7 @@ Apptainer images vailable at: https://github.com/RepAdapt/singularity/blob/main/
 - **Reference must have `.fasta` suffix while genes GFF must have `.gff` suffix.**  
 
 - **Make sure that the `.gff` file and reference genome use the same exact chromosome names.**  
-  else the depth of coverage statistics will not be calculated. The names need to be exactly the same, so if, for example, the reference has `chromosome_1` and the GFF has `chr_1`, these will have to be changed to the same naming.  
+  If this is not the case the depth of coverage statistics will not be calculated. The names need to be exactly the same, so if, for example, the reference has `chromosome_1` and the GFF has `chr_1`, these will have to be changed to the same naming.  
 
 - **Make sure the chromosome/scaffold names do not contain weird characters that may break commands.**  
   A very unusual case that I found was a reference that had `|` pipes included in the chromosome names – this can cause a lot of issues, as the pipe `|` may be interpreted as a Linux pipe command.  
