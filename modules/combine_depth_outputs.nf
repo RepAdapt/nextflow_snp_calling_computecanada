@@ -2,7 +2,7 @@ process joinDepth {
     tag "Joining depth statistics across samples"
     cpus 1
     memory '4GB'
-    time '6h'
+    time '12h'
     publishDir params.outdir, mode: 'copy'
 
     input:

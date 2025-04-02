@@ -2,7 +2,7 @@ process bwaMap {
     tag "BWA-mem mapping"
     cpus 4
     memory '4GB'
-    time '6h'
+    time '12h'
     errorStrategy 'ignore'
    
     input:

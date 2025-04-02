@@ -2,7 +2,7 @@ process gatkIndex {
     tag "Reference GATK index building"
     cpus 1
     memory '4GB'
-    time '6h'
+    time '12h'
 
     input:
     path reference

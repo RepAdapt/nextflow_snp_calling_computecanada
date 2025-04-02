@@ -2,7 +2,7 @@ process prepareDepth {
     tag "Preparing files for depth statistics"
     cpus 1
     memory '4GB'
-    time '6h'
+    time '12h'
 
     input:
     path reference_fai

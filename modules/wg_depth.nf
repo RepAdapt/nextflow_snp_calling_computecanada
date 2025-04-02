@@ -2,7 +2,7 @@ process calculateWgDepth {
     tag "Extracting WG depth statistics from bam files"
     cpus 1
     memory '4GB'
-    time '6h'
+    time '12h'
 
     input:
     path depth_file
