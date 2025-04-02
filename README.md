@@ -91,7 +91,9 @@ The workflow should be run on a computing node, using the script <b>run_pipeline
 
 Change the profile flag in run_pipeline.sh to either beluga or narval (depending on which one you are using).
 
-<b>AVAILABLE OPTIONS</b>
+
+
+# Options
 
 --reads (default CWD: "./*{1,2}.fastq.gz") ### this can be changed, use it to match your raw fastq reads path and names patterns (ie. fq.gz)
 
@@ -102,7 +104,9 @@ Change the profile flag in run_pipeline.sh to either beluga or narval (depending
 --gff_file (No default, give full path)
 
 
-<b>IMPORTANT</b>
+
+
+# Important
 
 It is required to pull all the apptainer images as sif files and link them to the directory where you saved  them (/project/def-group/NXF_SINGULARITY_CACHEDIR) in the config file nextflow_singularity.config
 
