@@ -136,5 +136,5 @@ Apptainer images vailable at: https://github.com/RepAdapt/singularity/blob/main/
   A very unusual case that I found was a reference that had `|` pipes included in the chromosome names – this can cause a lot of issues, as the pipe `|` may be interpreted as a Linux pipe command.  
 
 - **If a process fails, the first thing to check is whether it was due to low run time or RAM.**  
-  RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files per sample), it might be necessary to increase RAM and run time for some processes.  
+  RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files size per sample), it might be necessary to increase RAM and run time for some processes in the modules directory.  
 
