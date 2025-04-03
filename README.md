@@ -124,7 +124,7 @@ This pipeline assumes that each sample has a single pair of paired end reads.
 
 - **Reference too fragmented -- stitching the reference genome:**  
   If a reference genome is highly fragmented, consisting of thousands or even millions of scaffolds, it is beneficial to stitch them into larger contiguous sequences before running the SNP calling pipeline to reduce the total number of scaffolds.  
-  Having a reference composed of too many scaffolds will cause errors in the indel realignment step with GATK3 – I am not sure which threshold is “too many.” This issue mite actually be caused by having very short scaffolds rather than the number of scaffolds.  
+  Having a reference composed of too many scaffolds will cause errors in the indel realignment step with GATK3 – I am not sure which threshold is “too many". This issue mite actually be caused by having very short scaffolds rather than the number of scaffolds.  
   Additionally, the pipeline parallelizes the SNP calling step (`bcftools mpileup + call`) by chromosome (calling SNPs in each chromosome in parallel), therefore having a very fragmented reference would result in sending thousands (or millions) of very fast jobs – it would still work but it would be an overkill and probably not ideal for queue times on a job scheduler.  
   So, if your reference is too fragmented, please stitch it and unstitch it after SNP calling!  
 
