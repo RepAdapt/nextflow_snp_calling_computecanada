@@ -75,7 +75,7 @@ Do not worry about the cpus, memory and time of the slurm process. These slurm g
 Do not change anything in the narval and beluga profiles, these are the specs of the machines in those clusters.
 
 
-Now, download all the singularity images needed: [https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.md](https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.imagelocations.md)
+Now, download all the singularity images needed: https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.imagelocations.md
 
 Create this directory and place them here (replace def-group with your account name):
 <pre>mkdir /project/def-group/NXF_SINGULARITY_CACHEDIR</pre>
