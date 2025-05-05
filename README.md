@@ -1,4 +1,4 @@
-# nextflow_snp_calling_computecanada_narval
+# nextflow_snp_calling_computecanada
 Nextflow pipeline for Narval/Beluga Compute Canada HPC with SLURM
 
 This pipeline takes paired-end fastq reads, a reference genome and a gff file and will produce:
