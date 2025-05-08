@@ -17,7 +17,7 @@ process snpCalling {
     script:
     """   
         echo "Processing chromosome: $chr"
-        bcftools mpileup -Ou -f ${reference} -r $chr ${bam_files} -q 5 -I -a FMT/AD | \
+        bcftools mpileup -Ou -f ${reference} -r $chr ${bam_files} -q 5 -I -a FMT/AD,FMT/DP | \
         bcftools call -G - -f GQ -mv -Oz > variants_chr_${chr}.vcf.gz
         bcftools filter -e 'AC=AN || MQ < 30' variants_chr_${chr}.vcf.gz -Oz > final_variants_chr_${chr}.vcf.gz
     """
