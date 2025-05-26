@@ -113,7 +113,7 @@ It is required to pull all the singularity/apptainer images as sif files and lin
 Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularity/blob/main/RepAdaptSingularity.imagelocations.md
 
 
-This pipeline assumes that each sample has a single pair of paired end reads.
+<b>THIS PIPELINE ASSUMES THAT EACH SAMPLE HAS A SINGLE PAIR OF PAIRED END READS.</b>
 
 
 
@@ -137,5 +137,37 @@ This pipeline assumes that each sample has a single pair of paired end reads.
   A very unusual case that I found was a reference that had `|` pipes included in the chromosome names – this can cause a lot of issues, as the pipe `|` may be interpreted as a Linux pipe command.  
 
 - **If a process fails, the first thing to check is whether it was due to low run time or RAM.**  
-  RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files size per sample), it might be necessary to increase RAM and run time for some processes in the modules directory.  
+  RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files size per sample), it might be necessary to increase RAM and run time for some processes in the modules directory.  If a process fails due to RAM or run time, it can be resumed from where it failed relaunching the pipeline by adding the flag -resume
 
+
+- **The bwa-mem step of the pipelin will produced samples SAMs simultaneously, which can result in storage issues for some users.**  
+If this is the case for you, you can limit the number of bwa-mep mapping process occurring at the same time by adding the maxForks option within the bwa_mapping.nf script in the modules directory.
+This needs to be added at the top of the script, for example:
+
+<pre> process bwaMap {
+    maxForks = 10
+    tag "BWA-mem mapping"
+    cpus 4
+    memory '4GB'
+    time '12h'
+    errorStrategy 'ignore'
+   
+    input:
+    path reference
+    file "${reference.baseName}.fasta.amb"
+    file "${reference.baseName}.fasta.ann"
+    file "${reference.baseName}.fasta.bwt"
+    file "${reference.baseName}.fasta.pac"
+    file "${reference.baseName}.fasta.sa"
+    tuple val(sample_id), path(trimmed_reads)
+
+    output:
+    path "${sample_id}.sam"
+
+    script:
+    """
+    bwa mem -t $task.cpus $reference ${trimmed_reads[0]} ${trimmed_reads[1]} > ${sample_id}.sam
+    """
+}</pre>
+
+The above will force the pipeline to run a maximum of 10 mapping proccesses at the same time. This way, it will be possible to mitigate the accumulation of too many SAMs at the same time. SAMs are converted to BAMs and deleted in the following step. Adjust the number of forks as required.
