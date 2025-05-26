@@ -12,7 +12,8 @@ process addRG {
     path "${sorted_bam[0].baseName}_RG.bam"
  
     script:
+    def id = sorted_bam[0].baseName.replaceFirst(/_sorted$/, '')
     """
-    picard AddOrReplaceReadGroups -INPUT ${sorted_bam[0]} -OUTPUT ${sorted_bam[0].baseName}_RG.bam -RGID ${sorted_bam[0].baseName} -RGLB ${sorted_bam[0].baseName}_LB -RGPL ILLUMINA -RGPU unit1 -RGSM ${sorted_bam[0].baseName} --VALIDATION_STRINGENCY SILENT
+    picard AddOrReplaceReadGroups -INPUT ${sorted_bam[0]} -OUTPUT ${sorted_bam[0].baseName}_RG.bam -RGID ${id} -RGLB ${id}_LB -RGPL ILLUMINA -RGPU unit1 -RGSM ${id} --VALIDATION_STRINGENCY SILENT
     """
 }

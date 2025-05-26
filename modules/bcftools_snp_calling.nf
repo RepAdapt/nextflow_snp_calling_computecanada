@@ -2,7 +2,7 @@ process snpCalling {
     tag "SNP calling with bcftools mpileup + call"
     cpus 1
     memory '16GB'
-    time '48h'
+    time '100h'
 
     input:
     path reference

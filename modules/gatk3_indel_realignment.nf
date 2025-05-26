@@ -4,6 +4,7 @@ process realignIndel {
     memory '20GB'
     time '48h'
     errorStrategy 'ignore'
+    publishDir params.outdir, mode: 'copy'
 
     input:
     path dedup_bam

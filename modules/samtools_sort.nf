@@ -14,6 +14,7 @@ process samtoolsSort {
     script:
     """
     samtools view -Sb -q 10 $sample_sam > temp666.bam
+    rm "\$(readlink -f "${sample_sam}")"
     rm $sample_sam
     samtools sort -n -o temp777.bam temp666.bam
     samtools fixmate -m temp777.bam temp888.bam
