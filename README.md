@@ -141,7 +141,7 @@ Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularit
 
 
 - **The bwa-mem step of the pipelin will produced samples SAMs simultaneously, which can result in storage issues for some users.**  
-If this is the case for you, you can limit the number of bwa-mep mapping process occurring at the same time by adding the maxForks option within the bwa_mapping.nf script in the modules directory.
+If this is the case for you, you can limit the number of bwa-mem mapping processes occurring at the same time by adding the maxForks option within the bwa_mapping.nf script in the modules directory.
 This needs to be added at the top of the script, for example:
 
 <pre> process bwaMap {
