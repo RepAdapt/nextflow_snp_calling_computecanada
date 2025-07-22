@@ -140,7 +140,7 @@ Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularit
   RAM and run time can be easily edited for each process by modifying its corresponding script in the `modules` directory. I tried to provide high enough values that will work for most datasets, but if your dataset is particularly large (in terms of reference size or raw FASTQ files size per sample), it might be necessary to increase RAM and run time for some processes in the modules directory. If the pipeline fails due to a process RAM or run time, it can be resumed from where it failed relaunching the pipeline by adding the flag -resume (after editing RAM/run time)
 
 
-- **The bwa-mem step of the pipelin will produced samples SAMs simultaneously, which can result in storage issues for some users.**  
+- **The bwa-mem step of the pipeline will produced samples SAMs simultaneously, which can result in storage issues for some users.**  
 If this is the case for you, you can limit the number of bwa-mem mapping processes occurring at the same time by adding the maxForks option within the bwa_mapping.nf script in the modules directory.
 This needs to be added at the top of the script, for example:
 
