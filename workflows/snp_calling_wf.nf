@@ -16,7 +16,7 @@ include {gatkIndex} from '../modules/gatk_index'
 include {addRG} from '../modules/picard_add_read_groups'
 include {samtoolsRealignedIndex} from '../modules/samtools_indexing_bam'
 include {calculateWindowsDepth} from '../modules/windows_depth'
-
+include {samtoolsDedupIndex} from '../modules/samtools_indexing_dedup_bam'
 
 
 
@@ -42,9 +42,10 @@ workflow snp_calling {
     sorted_bam = samtoolsSort(mapped_sam)
     rg_bam = addRG(sorted_bam)
     dedup_bams = dupRemoval(rg_bam)
+    dedup_bai = samtoolsDedupIndex(dedup_bams)
     
     // Indel realignment and re-indexing
-    realigned_bams = realignIndel(dedup_bams, params.ref_genome, fai_index, gatk_index)
+    realigned_bams = realignIndel(dedup_bams, dedup_bai, params.ref_genome, fai_index, gatk_index)
     realigned_bai = samtoolsRealignedIndex(realigned_bams)
     
     // Calculate depth stats per sample: genes, windows and wg
