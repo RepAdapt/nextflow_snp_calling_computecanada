@@ -4,7 +4,7 @@
 #SBATCH --mem-per-cpu=8G
 #SBATCH --account=def-yeaman
 
-module load nextflow
+module load nextflow/25.10.2
 module load apptainer
 
 source /home/gabnoc/nf-core-env/bin/activate
