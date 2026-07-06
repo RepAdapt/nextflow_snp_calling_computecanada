@@ -43,9 +43,10 @@ workflow snp_calling {
     rg_bam = addRG(sorted_bam)
     dedup_bams = dupRemoval(rg_bam)
     dedup_bai = samtoolsDedupIndex(dedup_bams)
+    all_dedup_bai_ch = dedup_bai.collect()    
     
     // Indel realignment and re-indexing
-    realigned_bams = realignIndel(dedup_bams, dedup_bai, params.ref_genome, fai_index, gatk_index)
+    realigned_bams = realignIndel(dedup_bams, all_dedup_bai_ch, params.ref_genome, fai_index, gatk_index)
     realigned_bai = samtoolsRealignedIndex(realigned_bams)
     
     // Calculate depth stats per sample: genes, windows and wg
