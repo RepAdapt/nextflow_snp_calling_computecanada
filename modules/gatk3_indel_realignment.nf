@@ -20,5 +20,8 @@ process realignIndel {
     """
     gatk3 -T RealignerTargetCreator -R $reference -I $dedup_bam -o ${dedup_bam[0].baseName}_intervals.intervals 
     gatk3 -T IndelRealigner -R $reference -I $dedup_bam -targetIntervals ${dedup_bam[0].baseName}_intervals.intervals --consensusDeterminationModel USE_READS  -o ${dedup_bam[0].baseName}_realigned.bam 
+    rm "\$(readlink -f "$dedup_bam")"
+    rm $dedup_bam
+
     """
 }
