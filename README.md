@@ -120,7 +120,7 @@ Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularit
 <b>THIS PIPELINE ASSUMES THAT EACH SAMPLE HAS A SINGLE PAIR OF PAIRED END READS.</b>
 
 
-# Depth of Coverage Partial Pipeline
+# Depth of coverage partial pipeline
 It is possible to run the coverage statistics component of the pipeline as a standalone step. To do so, you must first generate the final realigned BAM files, which are assumed to be located in ./output.
 This pipeline is executed using the coverage_stats_main.nf script, which you can edit to specify the exact location of your realigned .bam files.
 
