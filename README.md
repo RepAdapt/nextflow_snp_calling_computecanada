@@ -120,7 +120,12 @@ Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularit
 <b>THIS PIPELINE ASSUMES THAT EACH SAMPLE HAS A SINGLE PAIR OF PAIRED END READS.</b>
 
 
+# Partial Pipeline
+It is possible to run the coverage statistics component of the pipeline as a standalone step. To do so, you must first generate the final realigned BAM files, which are assumed to be located in ./output.
+This pipeline is executed using the coverage_stats_main.nf script, which you can edit to specify the exact location of your realigned .bam files.
 
+To run the coverage stats workflow, you should use this nextflow command within the run_pipeline.sh script:
+<pre>nextflow run coverage_stats_main.nf -config nextflow.config --ref_genome /path/to/reference_genome.fasta --gff_file /path/to/genes.gff</pre>
 
 
 
