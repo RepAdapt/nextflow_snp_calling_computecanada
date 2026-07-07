@@ -121,7 +121,7 @@ Singularity/Apptainer images vailable at: https://github.com/RepAdapt/singularit
 
 
 # Depth of coverage partial pipeline
-It is possible to run the coverage statistics component of the pipeline as a standalone step: <b> this is not necessary if the full pipeline was run</b>, as this step is included. To run this partial pipeline aimed at generating depth statistics, you must have the final realigned BAM files, which are assumed to be located in ./output (dfault outdir).
+It is possible to run the coverage statistics component of the pipeline as a standalone step: <b> this is not necessary if the full pipeline was run</b>, as this step is included. To run this partial pipeline aimed at generating depth statistics, you must have the final realigned BAM files, which are assumed to be located in ./output (default outdir).
 
 To run the coverage stats workflow, you should use this nextflow command within the run_pipeline.sh script:
 <pre>nextflow run coverage_stats_main.nf -config nextflow.config --ref_genome /path/to/reference_genome.fasta --gff_file /path/to/genes.gff</pre>
