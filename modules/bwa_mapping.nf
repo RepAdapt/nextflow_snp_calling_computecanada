@@ -20,5 +20,9 @@ process bwaMap {
     script:
     """
     bwa mem -t $task.cpus $reference ${trimmed_reads[0]} ${trimmed_reads[1]} > ${sample_id}.sam
+    rm "\$(readlink -f "${trimmed_reads[0]}")"
+    rm ${trimmed_reads[0]}
+    rm "\$(readlink -f "${trimmed_reads[1]}")"
+    rm ${trimmed_reads[1]}
     """
 }
