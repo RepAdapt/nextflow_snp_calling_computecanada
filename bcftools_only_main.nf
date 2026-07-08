@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 params.bams = "./output/*.bam"
-params.outdir = "/home/gabnoc/scratch/output/"
+params.outdir = "./output/"
 params.ref_genome = ""
 
 
