@@ -92,7 +92,7 @@ Also add the above export command to your ~/.bashrc
 Now we have everything ready to start the workflow.
 
 The workflow should be run on a computing node, using the script <b>run_pipeline.sh</b> (submit with sbatch -- give this job only 1 cpu, 8 GB RAM but MAX available run time which is 7 days in narval and beluga). 
-
+<pre>sbatch run_pipeline.sh </pre>
 Change the profile flag in run_pipeline.sh to either beluga or narval (depending on which one you are using).
 
 
