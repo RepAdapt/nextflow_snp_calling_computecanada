@@ -128,6 +128,14 @@ To run the coverage stats workflow, you should use this nextflow command within 
 
 You can edit the script coverage_stats_main.nf to change the location of your bam files and output directory.
 
+# BCFtools SNP call only partial pipeline
+It is possible to run the bcftools snp calling step of the pipeline as a standalone step: <b> this is not necessary if the full pipeline was run</b>, as this step is included. To run this partial pipeline aimed at generating he vcf file, you must have the final realigned BAM files, which are assumed to be located in ./output (default outdir).
+
+To run the bcftools only workflow, you should use this nextflow command within the run_pipeline.sh script:
+<pre>nextflow run bcftools_only_main.nf -config nextflow.config --ref_genome /path/to/reference_genome.fasta </pre>
+
+You can edit the script bcftools_only_main.nf to change the location of your bam files and output directory.
+
 
 
 # Comments
